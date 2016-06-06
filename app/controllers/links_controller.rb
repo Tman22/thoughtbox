@@ -11,7 +11,7 @@ class LinksController < ApplicationController
       redirect_to links_path
     else
       flash.now[:error] = "Please put in a valid URL! Tip: Url must start with http://(...)"
-      @links = []
+      @links = Link.where(user_id: current_user.id)
       render :index
     end
   end

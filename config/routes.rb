@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :links, only: [:index, :create]
   resources :sessions, only: [:new, :create]
 
-  namespace :api do
+  namespace :api, :defaults => {format: :json }do
     namespace :v1 do
-      resources :links, only: [:update]
+      resources :links, only: [:update, :index]
     end
   end
 end
