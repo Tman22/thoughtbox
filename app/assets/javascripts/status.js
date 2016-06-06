@@ -14,7 +14,7 @@ function updateStatus(div, id, data) {
     type: 'PUT',
     data: { data },
     success: function() {
-      
+      console.log('START AGAIN!')
     }
   })
 }
