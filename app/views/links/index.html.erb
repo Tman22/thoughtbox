@@ -9,10 +9,14 @@
 
 <div class='links'>
   <% @links.each do |link| %>
-    <h3><%= link.title %></h3>
-    <ul>
-      <li><button><%= link.status_output %></button></li>
-      <li><%= link.url %></li>
-    </ul>
+    <div id="<%= link.id %>">
+      <h3><%= link.title %></h3>
+      <ul>
+        <li class="<%= link.status_output %>">
+          <a href='<%= link.url %>'><%= link.url %></a> -
+          <button>Mark as <%= link.status_output %></button>
+        </li>
+      </ul>
+    </div>
   <% end %>
 </div>
