@@ -2,20 +2,35 @@ require 'rails_helper'
 
 RSpec.describe 'User goes to root page' do
   include Capybara::DSL
-  context 'user sees sign in' do
-    it 'and signs in' do
+  context 'user sees sign in and sign up' do
+    it 'and signs up' do
 
       visit '/'
 
-      expect(page).to have_link 'Sign In'
+      expect(page).to have_link 'Sign Up'
+    end
+
+    it 'clicks on sign up' do
+
+      visit '/'
+      click_on 'Sign Up'
+
+      expect(current_path).to eq '/users/new'
     end
 
     it 'clicks on sign in' do
-
+      user = User.create(name: 'bob', email: 'bobslife@aol.com', password: 'iscool')
       visit '/'
       click_on 'Sign In'
 
-      expect(current_path).to eq '/users/new'
+      expect(current_path).to eq '/sessions/new'
+
+      fill_in 'Email', with: 'bobslife@aol.com'
+      fill_in 'Password', with: 'iscool'
+      click_on 'Submit'
+
+      expect(current_path).to eq '/links'
+
     end
 
     it 'and creates account then signs out' do

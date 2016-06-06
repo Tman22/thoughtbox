@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :destroy]
   resources :links, only: [:index, :create]
+  resources :sessions, only: [:new, :create]
 end

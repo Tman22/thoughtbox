@@ -6,3 +6,13 @@
   <%= f.text_field :url, placeholder: 'Url' %>
   <%= f.submit 'Create Link' %>
 <% end %>
+
+<div class='links'>
+  <% @links.each do |link| %>
+    <h3><%= link.title %></h3>
+    <ul>
+      <li><button><%= link.status_output %></button></li>
+      <li><%= link.url %></li>
+    </ul>
+  <% end %>
+</div>
