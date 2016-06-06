@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'database_cleaner'
   gem 'mocha'
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 group :development do

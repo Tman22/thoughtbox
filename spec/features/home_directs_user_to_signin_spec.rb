@@ -30,7 +30,7 @@ RSpec.describe 'User goes to root page' do
       expect(User.all.count).to eq 1
       user = User.first
 
-      expect(current_path).to eq "/users/#{user.id}"
+      expect(current_path).to eq "/links"
       expect(page).to have_content 'Sign Out'
       expect(page).to have_content "Welcome #{user.name}!"
 

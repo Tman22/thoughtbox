@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'root#index'
 
-  resources :users, only: [:index, :new, :create, :show, :destroy]
+  resources :users, only: [:new, :create, :destroy]
+  resources :links, only: [:index]
 end
