@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'User can create a link' do
   include Capybara::DSL
-  context 'sees only their links' do
-    it 'creates link' do
+  context 'trys to create link' do
+    it 'creates link and sees their link' do
       user = User.create(name: 'Taylor', email: 'awesomesauce@cool.net', password: 'password')
 
       ApplicationController.any_instance.stubs(:current_user).returns(user)
@@ -18,7 +18,9 @@ RSpec.describe 'User can create a link' do
 
       expect(current_path).to eq '/links'
       expect(Link.all.count).to eq 1
-
+      expect(page).to have_content 'Cool'
+      expect(page).to have_content 'http://www.youtube.com'
+      expect(page).to have_content 'Unread'
 
     end
 

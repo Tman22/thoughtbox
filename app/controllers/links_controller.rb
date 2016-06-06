@@ -6,11 +6,12 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.new(link_params)
     if @link.save
       redirect_to links_path
     else
       flash.now[:error] = "Please put in a valid URL! Tip: Url must start with http://(...)"
+      @links = []
       render :index
     end
   end
