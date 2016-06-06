@@ -32,10 +32,37 @@ RSpec.describe 'User goes to root page' do
 
       expect(current_path).to eq "/users/#{user.id}"
       expect(page).to have_content 'Sign Out'
+      expect(page).to have_content "Welcome #{user.name}!"
 
       click_on 'Sign Out'
 
       expect(current_path).to eq '/'
+    end
+
+    it 'does not create account password error' do
+
+      visit '/users/new'
+      fill_in 'Name', with: 'Bruce'
+      fill_in 'Email', with: 'darkness@batcave.com'
+      fill_in 'Password', with: 'Rough'
+      fill_in 'Password confirmation', with: 'RoughLife20'
+      click_on 'Create'
+
+      expect(current_path).to eq "/users"
+      expect(page).to have_content "Password confirmation doesn't match Password"
+    end
+
+    it 'does not create account email error' do
+      User.create(name: 'Robin', email: 'darkness@batcave.com', password: 'sidekick101')
+      visit '/users/new'
+      fill_in 'Name', with: 'Bruce'
+      fill_in 'Email', with: 'darkness@batcave.com'
+      fill_in 'Password', with: 'Rough'
+      fill_in 'Password confirmation', with: 'RoughLife20'
+      click_on 'Create'
+
+      expect(current_path).to eq "/users"
+      expect(page).to have_content "Email has already been taken"
     end
   end
 end
