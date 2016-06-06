@@ -1,1 +1,8 @@
 <%= link_to 'Sign Out', user_path(current_user.id), method: :DELETE  %>
+<br>
+<br>
+<%= form_for @link do |f| %>
+  <%= f.text_field :title, placeholder: 'Title' %>
+  <%= f.text_field :url, placeholder: 'Url' %>
+  <%= f.submit 'Create Link' %>
+<% end %>
