@@ -20,7 +20,7 @@ RSpec.describe 'User can create a link' do
       expect(Link.all.count).to eq 1
       expect(page).to have_content 'Cool'
       expect(page).to have_content 'http://www.youtube.com'
-      expect(page).to have_content 'Unread'
+      expect(page).to have_button 'Mark as Unread'
 
     end
 
