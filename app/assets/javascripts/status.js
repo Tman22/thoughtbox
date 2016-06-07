@@ -51,7 +51,7 @@ function singleLink(link) {
     "<ul><li class='" + status_output(link) + "'><a href='" +
       link.url + "'>" +
       link.url + "</a> - " +
-      "<button>Mark as " + status_output(status) + "</button></li>" +
+      "<button>Mark as " + status_output(link) + "</button></li>" +
     "</ul>" +
   "</div>"
   )
