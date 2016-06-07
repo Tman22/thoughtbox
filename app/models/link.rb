@@ -1,6 +1,6 @@
 require 'uri'
 class Link < ActiveRecord::Base
-  before_create :url_valid?
+  before_save :url_valid?
   validates :title, presence: true
   validates :url, presence: true
   belongs_to :user
@@ -9,7 +9,7 @@ class Link < ActiveRecord::Base
     url = self.url
     uri = URI.parse(url)
     uri.kind_of?(URI::HTTP)
-  rescue URI::InvalidURIError
+    rescue URI::InvalidURIError
     false
   end
 
