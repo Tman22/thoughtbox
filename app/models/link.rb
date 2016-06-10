@@ -14,11 +14,7 @@ class Link < ActiveRecord::Base
   end
 
   def status_output
-    if self.status == false
-      'Unread'
-    else
-      'Read'
-    end
+    self.status ? 'Read' : 'Unread' 
   end
 
 end

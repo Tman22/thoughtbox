@@ -36,7 +36,7 @@ function fetchLinks() {
   })
 }
 
-var status_output = function(link) {
+var statusOutput = function(link) {
   if(link.status === false) {
     return "Unread"
   } else {
@@ -48,10 +48,10 @@ function singleLink(link) {
   $('.links').append(
   "<div id='" + link.id + "'>" +
     "<h3>" + link.title + "</h3>" +
-    "<ul><li class='" + status_output(link) + "'><a href='" +
+    "<ul><li class='" + statusOutput(link) + "'><a href='" +
       link.url + "'>" +
       link.url + "</a> - " +
-      "<button>Mark as " + status_output(link) + "</button></li>" +
+      "<button>Mark as " + statusOutput(link) + "</button></li>" +
       "<li><a href='/links/" + link.id + "/edit'>Edit</a></li>"+
     "</ul>" +
   "</div>"
