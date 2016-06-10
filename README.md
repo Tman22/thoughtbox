@@ -1,4 +1,4 @@
-== README
+README
 
 This is a midterm that we had!
 8 hour code challenge to create this!
